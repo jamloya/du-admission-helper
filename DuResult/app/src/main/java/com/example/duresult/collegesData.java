@@ -21,6 +21,9 @@ public class collegesData {
     public void addCourseDetails(String coursename,ArrayList<String> details){
         courses.put(coursename,details);
     }
+    public HashMap<String,ArrayList<String>> getCourses(){
+        return courses;
+    }
 
     public String getCollegename(){
         return collegename;

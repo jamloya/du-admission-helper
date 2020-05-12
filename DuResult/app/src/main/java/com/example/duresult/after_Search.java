@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +22,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.function.BiConsumer;
 
 public class after_Search extends AppCompatActivity {
     final ArrayList<collegesData> resultColleges=new ArrayList<collegesData>();
@@ -71,6 +75,25 @@ public class after_Search extends AppCompatActivity {
                         CollegeAdapter adapter=new CollegeAdapter(getApplicationContext(),resultColleges);
                         ListView lv=(ListView) findViewById(R.id.result_list);
                         lv.setAdapter(adapter);
+
+                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                collegesData clickedcollege=resultColleges.get(position);
+                                Intent i=new Intent(getApplicationContext(),resultCourses.class);
+                                Bundle b=new Bundle();
+                                b.putString("collegename",clickedcollege.getCollegename());
+                                for(Map.Entry mapElement :clickedcollege.getCourses().entrySet())
+                                {
+                                    String key = (String)mapElement.getKey();
+                                    ArrayList<String> details;
+                                    details=(ArrayList<String>) mapElement.getValue();
+                                    b.putStringArrayList(key,details);
+                                }
+                                i.putExtras(b);
+                                startActivity(i);
+                            }
+                        });
                     }
 
                     @Override
