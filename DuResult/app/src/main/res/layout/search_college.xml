@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="40dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="Choose Stream : "
+                    android:textColor="@color/dark"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spinner1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/border"
+                    android:paddingLeft="10dp"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/firstSubjectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="First Subject marks">
+
+                <EditText
+                    android:id="@+id/firstSubject"
+                    style="@style/searchEditText"
+                    android:paddingLeft="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/secondSubjectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/secondSubject"
+                    style="@style/searchEditText"
+                    android:hint="Second Subject marks"
+                    android:paddingLeft="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/thirdSubjectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/thirdSubject"
+                    style="@style/searchEditText"
+                    android:hint="Third Subject marks"
+                    android:paddingLeft="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fourthSubjectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/fourthSubject"
+                    style="@style/searchEditText"
+                    android:hint="fourth Subject marks"
+                    android:paddingLeft="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fifthSubjectLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/fifthSubject"
+                    style="@style/searchEditText"
+                    android:hint="Fifth Subject marks"
+                    android:paddingLeft="10dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:checkedButton="@+id/first"
+                android:orientation="horizontal">
+
+                <RadioButton
+
+                    android:id="@+id/first"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/second"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Female" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp">
+
+                <Button
+                    android:id="@+id/calcPerBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/ripple_effect"
+                    android:drawableLeft="@drawable/ic_functions_24px"
+                    android:padding="10dp"
+                    android:text="@string/calPer"
+                    android:textFontWeight="100"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/calcPerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:text="0%"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/searchColleges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ripple_effect"
+                android:drawableLeft="@drawable/ic_search"
+                android:padding="10dp"
+                android:text="Search"
+                android:textFontWeight="100"
+                android:textSize="10sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/result"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</ScrollView>
