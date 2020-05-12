@@ -100,27 +100,52 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
+                android:id="@+id/radioButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:checkedButton="@+id/first"
+                android:checkedButton="@+id/male"
                 android:orientation="horizontal">
 
                 <RadioButton
 
-                    android:id="@+id/first"
+                    android:id="@+id/male"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Male" />
+                    android:text="male" />
 
                 <RadioButton
-                    android:id="@+id/second"
+                    android:id="@+id/female"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Female" />
+                    android:text="female" />
             </RadioGroup>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="Category : "
+                    android:textColor="@color/dark"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spinner2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/border"
+                    android:paddingLeft="10dp"
+                    android:textAlignment="center" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -165,9 +190,9 @@
                 android:textSize="10sp" />
 
             <TextView
+                android:id="@+id/result"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/result"/>
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </RelativeLayout>

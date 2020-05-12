@@ -13,9 +13,8 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class CollegeAdapter extends ArrayAdapter<collegesData> {
-    public CollegeAdapter(Context c,ArrayList<collegesData> colleges)
-    {
-        super(c,0,colleges);
+    public CollegeAdapter(Context c, ArrayList<collegesData> colleges) {
+        super(c, 0, colleges);
     }
 
     @NonNull

@@ -52,8 +52,8 @@ public class Colleges extends Fragment {
         }
     }
 
-    public void invokeError(){
-        Toast.makeText(getContext(),"No  Internet Connection",Toast.LENGTH_SHORT).show();
+    public void invokeError() {
+        Toast.makeText(getContext(), "No  Internet Connection", Toast.LENGTH_SHORT).show();
     }
 
     @Override

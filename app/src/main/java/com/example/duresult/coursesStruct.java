@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class coursesStruct {
     private String courseName;
-    private ArrayList<String> details=new ArrayList<String>();
+    private ArrayList<String> details = new ArrayList<String>();
 
-    public coursesStruct(String name,ArrayList<String> detail){
-        this.courseName=name;
-        this.details=detail;
+    public coursesStruct(String name, ArrayList<String> detail) {
+        this.courseName = name;
+        this.details = detail;
     }
 
 
@@ -16,13 +16,11 @@ public class coursesStruct {
         return this.courseName;
     }
 
-    public String getCategory()
-    {
+    public String getCategory() {
         return this.details.get(0);
     }
 
-    public String getPercentage()
-    {
+    public String getPercentage() {
         return this.details.get(1);
     }
 }

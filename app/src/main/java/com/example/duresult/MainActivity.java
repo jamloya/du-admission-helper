@@ -25,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final ViewPager viewpager;
-        tablayout=findViewById(R.id.tabLayout);
-        viewpager=findViewById(R.id.viewPager);
-        myadapter adapter=new myadapter(this,getSupportFragmentManager());
+        tablayout = findViewById(R.id.tabLayout);
+        viewpager = findViewById(R.id.viewPager);
+        myadapter adapter = new myadapter(this, getSupportFragmentManager());
         adapter.addFragment(new Colleges(), "Colleges");
         adapter.addFragment(new search(), "Search");
         viewpager.setAdapter(adapter);
         tablayout.setupWithViewPager(viewpager);
-       //viewpager.addOnAdapterChangeListener((ViewPager.OnAdapterChangeListener) new TabLayout.TabLayoutOnPageChangeListener(tablayout));
+        //viewpager.addOnAdapterChangeListener((ViewPager.OnAdapterChangeListener) new TabLayout.TabLayoutOnPageChangeListener(tablayout));
         tablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (getCurrentFocus() != null) {

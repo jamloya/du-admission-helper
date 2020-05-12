@@ -16,13 +16,14 @@ public class myadapter extends FragmentStatePagerAdapter {
 
     private final List<Fragment> mFragmentList = new ArrayList<>();
     private final List<String> mFragmentTitleList = new ArrayList<>();
-    myadapter(Context c,FragmentManager fm){
+
+    myadapter(Context c, FragmentManager fm) {
         super(fm);
     }
 
     @NonNull
     @Override
-    public Fragment getItem( int position) {
+    public Fragment getItem(int position) {
         return mFragmentList.get(position);
     }
 
