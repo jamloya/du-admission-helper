@@ -67,7 +67,7 @@ public class after_Search extends AppCompatActivity {
         Qualified.setVisibility(View.GONE);
         final TextView message = (TextView) findViewById(R.id.message);
 
-        AndroidNetworking.get("https://dulistparser.herokuapp.com/search")
+        AndroidNetworking.get("API")
                 .addQueryParameter("percentage", percentage)
                 .addQueryParameter("gender", gender)
                 .addQueryParameter("category", category)
