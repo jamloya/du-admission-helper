@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class search extends Fragment {
-    double percentage;
+    double percentage=0;
     ArrayList<Double> allMarks = new ArrayList<Double>();
     private RadioButton radioButton;
     private EditText marks1, marks2, marks3, marks4, marks5;
@@ -87,6 +87,23 @@ public class search extends Fragment {
 
     }
 
+    public boolean checkInputs()
+    {
+        boolean flag;
+        if(marks1.getText().toString().replaceAll("\\s","")=="" ||
+        marks2.getText().toString().replaceAll("\\s","")=="" ||
+        marks3.getText().toString().replaceAll("\\s","")=="" ||
+        marks4.getText().toString().replaceAll("\\s","")=="" ||
+        marks5.getText().toString().replaceAll("\\s","")=="")
+        {
+            flag=true;
+        }
+        else
+        {
+            flag=false;
+        }
+        return flag;
+    }
     RadioGroup radioGroup;
 
     @Override
@@ -135,15 +152,13 @@ public class search extends Fragment {
 
         final TextView per = (TextView) v.findViewById(R.id.calcPerText);
 
-        Button calcPer = (Button) v.findViewById(R.id.calcPerBtn);
+        final Button calcPer = (Button) v.findViewById(R.id.calcPerBtn);
         calcPer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 allMarks.clear();
-                if (allMarks.size() == 5) {
-                    calculatePercentage();
-                }
+                calculatePercentage();
             }
         });
         final RadioGroup radioGroup = (RadioGroup) v.findViewById(R.id.radioButton);
@@ -154,18 +169,22 @@ public class search extends Fragment {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                allMarks.clear();
                 calculatePercentage();
-                String ChoosenStream = sp.getSelectedItem().toString();
-                String ChoosenCategory = hm.get(sp1.getSelectedItem().toString());
-                int selectedid = radioGroup.getCheckedRadioButtonId();
+                if(!checkInputs()) {
+                    String ChoosenStream = sp.getSelectedItem().toString();
+                    String ChoosenCategory = hm.get(sp1.getSelectedItem().toString());
+                    int selectedid = radioGroup.getCheckedRadioButtonId();
 
-                radioButton = (RadioButton) radioGroup.findViewById(selectedid);
+                    radioButton = (RadioButton) radioGroup.findViewById(selectedid);
 
-                Intent i = new Intent(getActivity(), after_Search.class);
-                i.putExtra("percentage", String.valueOf(percentage));
-                i.putExtra("gender", String.valueOf(radioButton.getText()));
-                i.putExtra("category", ChoosenCategory);
-                startActivity(i);
+                    Intent i = new Intent(getActivity(), after_Search.class);
+                    i.putExtra("percentage", String.valueOf(percentage));
+                    i.putExtra("gender", String.valueOf(radioButton.getText()));
+                    i.putExtra("category", ChoosenCategory);
+                    startActivity(i);
+                }
             }
         });
 

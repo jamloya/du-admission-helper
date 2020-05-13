@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/shrine</item>
         <item name="colorPrimaryDark">@color/shrine</item>
@@ -10,6 +10,14 @@
 
     </style>
 
+    <style name="mytheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/shrine</item>
+        <item name="colorPrimaryDark">@color/shrine</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/black</item>
+
+    </style>
     <style name="searchEditText">
         <item name="android:layout_width">match_parent</item>
         <item  name="android:layout_height">wrap_content</item>

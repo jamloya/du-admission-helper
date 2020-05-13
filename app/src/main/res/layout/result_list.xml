@@ -11,6 +11,7 @@
         <TextView
             android:id="@+id/course_nameText"
             android:layout_width="0dp"
+            android:textColor="#000000"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
@@ -19,6 +20,7 @@
 
         <TextView
             android:id="@+id/categoryText"
+            android:textColor="#000000"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -29,6 +31,7 @@
         <TextView
             android:id="@+id/percentageText"
             android:layout_width="0dp"
+            android:textColor="#000000"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"

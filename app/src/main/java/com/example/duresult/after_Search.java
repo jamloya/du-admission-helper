@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -62,9 +63,11 @@ public class after_Search extends AppCompatActivity {
         String percentage = extras.getString("percentage");
         String gender = extras.getString("gender");
         String category = extras.getString("category");
-
+        final TextView Qualified=(TextView) findViewById(R.id.QualifiedText);
+        Qualified.setVisibility(View.GONE);
         final TextView message = (TextView) findViewById(R.id.message);
-        AndroidNetworking.get("http://10.0.2.2:5002/search")
+
+        AndroidNetworking.get("https://dulistparser.herokuapp.com/search")
                 .addQueryParameter("percentage", percentage)
                 .addQueryParameter("gender", gender)
                 .addQueryParameter("category", category)
@@ -74,6 +77,7 @@ public class after_Search extends AppCompatActivity {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        findViewById(R.id.loadingPanel).setVisibility(View.GONE);
                         if (response.length() != 0) {
                             JSONArray keys = response.names();
                             String key = null;
@@ -95,14 +99,19 @@ public class after_Search extends AppCompatActivity {
                                             }
                                         }
                                     } catch (JSONException e) {
-                                        e.printStackTrace();
+                                        Toast.makeText(getApplicationContext(),"Error Getting results.",Toast.LENGTH_SHORT).show();
                                     }
 
                                 }
                             }
                             if (!resultColleges.isEmpty()) {
                                 message.setVisibility(View.GONE);
+                                Qualified.setVisibility(View.VISIBLE);
                                 showList();
+                            }
+                            else
+                            {
+                                message.setVisibility(View.VISIBLE);
                             }
 
                         }
@@ -110,7 +119,8 @@ public class after_Search extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-
+                        findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(), "Error Getting Results.Try Again!", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

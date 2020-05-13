@@ -5,7 +5,10 @@ import androidx.viewpager.widget.ViewPager;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -18,12 +21,14 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tablayout;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidNetworking.initialize(getApplicationContext());
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         final ViewPager viewpager;
         tablayout = findViewById(R.id.tabLayout);
         viewpager = findViewById(R.id.viewPager);

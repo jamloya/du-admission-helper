@@ -1,6 +1,9 @@
 package com.example.duresult;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +27,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -52,8 +60,18 @@ public class Colleges extends Fragment {
         }
     }
 
-    public void invokeError() {
-        Toast.makeText(getContext(), "No  Internet Connection", Toast.LENGTH_SHORT).show();
+    public boolean isInternetWorking(){
+        ConnectivityManager cm =
+                (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        if(!isConnected)
+        {
+            Toast.makeText(getActivity(),"No Internet Connection.",Toast.LENGTH_SHORT).show();
+        }
+        return isConnected;
     }
 
     @Override
@@ -61,45 +79,51 @@ public class Colleges extends Fragment {
                              Bundle savedInstanceState) {
 
         v = inflater.inflate(R.layout.colleges_page, container, false);
-        if (allColleges.isEmpty()) {
-            AndroidNetworking.get("http://10.0.2.2:5002/Colleges")
-                    .addHeaders("Connection", "close")
-                    .setPriority(Priority.MEDIUM)
-                    .build()
-                    .getAsJSONObject(new JSONObjectRequestListener() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            JSONArray keys = response.names();
-                            String key = "null";
-                            JSONArray value = null;
-                            for (int i = 0; i < keys.length(); ++i) {
+        if(isInternetWorking()) {
+            if (allColleges.isEmpty()) {
+                AndroidNetworking.get("https://dulistparser.herokuapp.com/Colleges")
+                        .addHeaders("Connection", "close")
+                        .setPriority(Priority.MEDIUM)
+                        .build()
+                        .getAsJSONObject(new JSONObjectRequestListener() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                v.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+                                JSONArray keys = response.names();
+                                String key = "null";
+                                JSONArray value = null;
+                                for (int i = 0; i < keys.length(); ++i) {
 
-                                try {
-                                    key = keys.getString(i);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                                try {
-                                    value = response.getJSONArray(key); // Here's your value
-                                    for (int it = 0; it < value.length(); it++) {
-                                        JSONArray temp = value.getJSONArray(it);
-                                        allColleges.add(new collegesData(temp.getString(0), temp.getString(1)));
+                                    try {
+                                        key = keys.getString(i);
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
                                     }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
+                                    try {
+                                        value = response.getJSONArray(key); // Here's your value
+                                        for (int it = 0; it < value.length(); it++) {
+                                            JSONArray temp = value.getJSONArray(it);
+                                            allColleges.add(new collegesData(temp.getString(0), temp.getString(1)));
+                                        }
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
+                                addToList();
                             }
-                            addToList();
-                        }
 
-                        @Override
-                        public void onError(ANError anError) {
-                            invokeError();
-                            Log.d("Error", String.valueOf(anError));
-                        }
-                    });
+                            @Override
+                            public void onError(ANError anError) {
+                                v.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+                                Toast.makeText(getActivity(), "Error Getting Results.Try Again!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
         }
-
+        else
+        {
+            v.findViewById(R.id.loadingPanel).setVisibility(View.GONE);
+        }
         return v;
     }
 }

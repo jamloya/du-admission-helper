@@ -10,16 +10,19 @@
     <TextView
         android:id="@+id/collegeNameText"
         android:layout_width="match_parent"
+        android:background="@color/shrine"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:paddingVertical="20dp"
         android:textAlignment="center"
+        android:fontFamily="sans-serif-condensed-light"
         android:textColor="@color/dark"
         android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/teal50">
 
         <TextView
 

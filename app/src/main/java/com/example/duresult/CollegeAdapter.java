@@ -28,10 +28,8 @@ public class CollegeAdapter extends ArrayAdapter<collegesData> {
 
         collegesData currentCollege = getItem(position);
 
-        // Find the TextView in the list_item.xml layout with the ID miwok_text_view.
         TextView college = (TextView) listItemView.findViewById(R.id.collegesText);
-        // Get the Miwok translation from the currentWord object and set this text on
-        // the Miwok TextView.
+
         college.setText(currentCollege.getCollegename());
         return listItemView;
     }
