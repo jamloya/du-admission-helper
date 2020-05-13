@@ -81,7 +81,7 @@ public class Colleges extends Fragment {
         v = inflater.inflate(R.layout.colleges_page, container, false);
         if(isInternetWorking()) {
             if (allColleges.isEmpty()) {
-                AndroidNetworking.get("https://dulistparser.herokuapp.com/Colleges")
+                AndroidNetworking.get("Api/Colleges")
                         .addHeaders("Connection", "close")
                         .setPriority(Priority.MEDIUM)
                         .build()
